@@ -18,12 +18,13 @@ def getValuesByAgentName(request,agentName='default'):
     context['agentName'] = request.POST.get('agentName', 'default')
     agentName = context['agentName']
     if (agentName == 'default'):
-        error =  {'error': 'WARNING: No Valid Results Found! Please enter a valid agent name.'}       
+        error =  {'error': 'WARNING: No Valid Results Found! Please enter a valid agent name.'}
         args = {'posts': error}
         return render(request,'agentName/agentNameError.html',args)
         # return HttpResponse('Please enter an agent name!')
-    agentName = '\'' + agentName + '\''
-    sql_query = "call GetRulesFromAgentName("+ agentName + ")"
+    agentNameQ = '\'' + agentName + '\''
+    #sql_query = "call GetRulesFromAgentName("+ agentName + ")"
+    sql_query = "SELECT * from GetRulesFromAgentName where agent_name="+ agentNameQ
     vals = domain_agent.objects.raw(sql_query)
     args = {'posts': vals}
     lst = []
@@ -65,10 +66,10 @@ def getValuesByDomainNamePair(request,domainName1='default',domainName2='default
         error = {'error': 'WARNING: Please enter both domain names!'}
         args = {'posts': error}
         return render(request,'domainName/domainNameError.html',args)
-    domainName1 = '\'' + domainName1 + '\''
-    domainName2 = '\'' + domainName2 + '\''
+    domainName1Q = '\'' + domainName1 + '\''
+    domainName2Q = '\'' + domainName2 + '\''
     domainNames = domainName1 + "," + domainName2
-    sql_query = "call GetRulesFromDomainNamesPair("+ domainNames + ")"
+    sql_query = "SELECT * from GetRulesFromDomainNamesPair where domain_name1="+ domainName1Q + " and domain_name2="+domainName2Q
     vals = domain_pairs.objects.raw(sql_query)
     args = {'posts': vals}
     lst = []
