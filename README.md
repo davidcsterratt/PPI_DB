@@ -28,3 +28,8 @@ Get PPI rules based on domain names
 1. In order to access the PPI rules based on a pair of domain names, enter the fol- lowing URL in the web browser: http://127.0.0.1:8000/ppi/DomainNameForm/
 2. Enterthedomainnamesinthetextboxesprovidedandclickonsubmit,asshown in the figure 3.4. (Note: The domain names are case sensitive). Internally the django app makes a connection to the database and invokes the GetRulesFrom- DomainNamePair stored procedure and passes the domain names as arguments to it.
 3. The retrieved PPI rules will be visible in the next page as shown in the figure 3.5. In case there are no matching PPI rules then a message is displayed on the screen to inform the user.
+
+Get PPI rules based on domain names
+1. In order to access the PPI rules based on a pair of domain names, enter the fol- lowing URL in the web browser: http://127.0.0.1:8000/ppi/DomainNameForm/
+2. Enterthedomainnamesinthetextboxesprovidedandclickonsubmit,asshown in the figure 3.4. (Note: The domain names are case sensitive). Internally the django app makes a connection to the database and invokes the GetRulesFrom- DomainNamePair stored procedure and passes the domain names as arguments to it.
+3. The retrieved PPI rules will be visible in the next page as shown in the figure 3.5. In case there are no matching PPI rules then a message is displayed on the screen to inform the user.
